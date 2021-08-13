@@ -1,0 +1,4 @@
+mysqlclient
+django
+nltk
+gunicorn
