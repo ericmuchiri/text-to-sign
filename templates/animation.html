@@ -4,33 +4,34 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-8">
-            <div class="">
-                <h2>Enter Text or Use Mic</h2>
-                <br>
-                <form action="" autocomplete="off" method="post" align="left">
+        <div class="col-md-5 m-2">
+
+            <h2>Enter Text </h2>
+
+            <div class="container">
+                <form action="" autocomplete="off" method="post" style="text-align: center">
                     {% csrf_token %}
-                    <div class="input-group">
-                        <input type="text" value="{{ text }}" name="sen" class="form-control" id="speechToText"
-                               placeholder="Start typing...">
-                        <button type="button" name="button" class="mic" onclick="record()">
-                            <img src="{% static 'media/mic3.png' %}"
-                                 height="32px" width="38px"/>
-                        </button>
-                        <div class="input-group-append">
-                            <button name="button" onclick="convertSpeech()" class="btn btn-sm btn-primary"
-                                    type="button"> Convert
-                            </button>
-                        </div>
-                    </div>
+
+                    <input type="text" value="{{ text }}" name="sen" class="form-control" id="speechToText"
+                           placeholder="Start typing...">
+                    {#                        <button type="button" name="button" class="mic" onclick="record()">#}
+                    {#                            <img src="{% static 'media/mic3.png' %}"#}
+                    {#                                 height="32px" width="38px"/>#}
+
+                    <br/>
+                    <button name="button" onclick="convertSpeech()" class="btn   btn-primary"
+                            type="button"> Convert
+                    </button>
 
                 </form>
-                <br>
-                <ul class="td" id="list" align="center">
-
-                </ul>
-
             </div>
+
+            <br>
+            <ul class="td" id="list">
+                <li>If text has no corresponding sign, it will be sign-spelled</li>
+            </ul>
+
+
         </div>
         <div class="col-md-4">
             <div class="">
