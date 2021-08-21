@@ -24,7 +24,7 @@ SECRET_KEY = '3k7=!d39#4@_&5a6to&4=_=j(c^v0(vv91cj5+9e8+d4&+01jb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sign.easysoftware.co.ke']
+ALLOWED_HOSTS = ['sign.easysoftware.co.ke', '127.0.0.1']
 
 # Application definition
 
@@ -71,24 +71,24 @@ WSGI_APPLICATION = 'A2SL.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "SIGN_CONVERT",
-        'USER': "javo",
-        'PASSWORD': "secure_pass",
-        'HOST': "localhost",
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "SIGN_CONVERT",
+#         'USER': "javo",
+#         'PASSWORD': "secure_pass",
+#         'HOST': "localhost",
+#         'PORT': '3306',
+#     }
+#
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

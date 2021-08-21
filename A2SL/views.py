@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def home_view(request):
-    return render(request, 'home.html')
+    return redirect("animation")
 
 
 def about_view(request):
@@ -20,8 +20,6 @@ def about_view(request):
 
 def contact_view(request):
     return render(request, 'contact.html')
-
-
 
 
 def signup_view(request):

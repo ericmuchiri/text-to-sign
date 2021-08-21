@@ -1,20 +1,25 @@
+import json
+
 import nltk
 from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles import finders
+from django.http import HttpResponse
 from django.shortcuts import render
-
-# Create your views here.
+from django.contrib.staticfiles import finders
+from django.views.decorators.csrf import csrf_exempt
 from nltk import word_tokenize, WordNetLemmatizer
 
+from convert import keyword_list
 from convert.models import Conversion
+import os.path
 
 
-@login_required(login_url="login")
+@csrf_exempt
 def animation_view(request):
     if request.method == 'POST':
         text = request.POST.get('sen')
         conversion = Conversion()
-        conversion.user = request.user
+        # conversion.user = request.user
         conversion.search_text = text
         conversion.save()
 
@@ -54,6 +59,17 @@ def animation_view(request):
                     filtered_text.append(lr.lemmatize(w))
 
         # adding the specific word to specify tense
+        print("filtered")
+        print(filtered_text)
+        # defined_words = []
+        # for word in filtered_text:
+        #     file_name = word.capitalize() + ".mp4"
+        #     print(file_name)
+        #     if os.path.exists('static/media/' + file_name):
+        #         defined_words.append(file_name)
+        #     else:
+        #         print("path does not exist")
+
         words = filtered_text
         temp = []
         for w in words:
@@ -84,19 +100,22 @@ def animation_view(request):
         filtered_text = []
         for word in words:
             print(word)
-            upperW = word.upper()
+            upperW = word.capitalize()
             print(word)
             path = word + ".mp4"
-            f = finders.find(path)
-            # splitting the word if its animation is not present in database
-            if not f:
-                for c in word:
-                    filtered_text.append(c)
-            # otherwise animation of word
+            file_name = word.capitalize() + ".mp4"
+            print(file_name)
+            if os.path.exists('static/media/' + file_name):
+                # otherwise animation of word
+                filtered_text.append(word.capitalize())
             else:
-                filtered_text.append(word)
+                # other wise letters
+                for c in word:
+                    filtered_text.append(c.capitalize())
         words = filtered_text
+        print(filtered_text)
+        return HttpResponse(json.dumps(filtered_text))
 
-        return render(request, 'animation.html', {'words': words, 'text': text})
     else:
-        return render(request, 'animation.html')
+
+        return render(request, 'animation.html', {'keywords': keyword_list.get_list()})
