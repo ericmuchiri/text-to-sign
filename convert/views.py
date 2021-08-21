@@ -118,4 +118,8 @@ def animation_view(request):
 
     else:
 
-        return render(request, 'animation.html', {'keywords': keyword_list.get_list()})
+        path = "static/image-sign/"  # insert the path to your directory
+        img_list = os.listdir(path)
+        print(img_list)
+
+    return render(request, 'animation.html', {'keywords': keyword_list.get_list(), 'img_list': img_list})

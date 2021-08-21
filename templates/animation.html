@@ -82,7 +82,23 @@
 
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                        <div class="row">
+
+                            {% for img in img_list %}
+                                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                                    <img
+                                            src="/static/image-sign/{{ img }}"
+                                            class="w-100 shadow-1-strong rounded mb-4"
+                                            alt=""
+                                    />
+                                </div>
+
+                            {% endfor %}
+                        </div>
+
+                    </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
                 </div>
             </div>
