@@ -18,6 +18,8 @@ import os.path
 def animation_view(request):
     if request.method == 'POST':
         text = request.POST.get('sen')
+        # capitalize every word
+        text = text.title()
         conversion = Conversion()
         # conversion.user = request.user
         conversion.search_text = text

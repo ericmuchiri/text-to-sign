@@ -3,51 +3,61 @@
 
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-5 m-2">
-
-            <h2>Enter Text </h2>
-
-            <div class="container">
-                <form action="" autocomplete="off" method="post" style="text-align: center">
-                    {% csrf_token %}
-
-                    <input type="text" value="{{ text }}" name="sen" class="form-control" id="speechToText"
-                           placeholder="Start typing...">
-                    {#                        <button type="button" name="button" class="mic" onclick="record()">#}
-                    {#                            <img src="{% static 'media/mic3.png' %}"#}
-                    {#                                 height="32px" width="38px"/>#}
-
-                    <br/>
-                    <button name="button" onclick="convertSpeech()" class="btn   btn-primary"
-                            type="button"> Convert
-                    </button>
-
-                </form>
-            </div>
-
-            <br>
-            <ul class="td" id="list">
-                <li>If text has no corresponding sign, it will be sign-spelled</li>
-            </ul>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5 m-2">
 
 
-        </div>
-        <div class="col-md-4">
-            <div class="">
-                <div style="text-align:center"> &nbsp&nbsp
-                    <button class="submit" style="display: none" onclick="playPause()">Play/Pause</button>
-                    <video id="videoPlayer" width="400" height="233" preload="auto" autoplay>
-                        <source src="{% static 'media/Hello.mp4' %}" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
+                    <h2 style="color: maroon">Enter Text </h2>
+
+                    <div class="container">
+                        <form action="" autocomplete="off" method="post" style="text-align: center">
+                            {% csrf_token %}
+
+                            <input type="text" value="{{ text }}" name="sen" class="form-control" id="speechToText"
+                                   placeholder="Start typing...">
+                            {#                        <button type="button" name="button" class="mic" onclick="record()">#}
+                            {#                            <img src="{% static 'media/mic3.png' %}"#}
+                            {#                                 height="32px" width="38px"/>#}
+
+                            <br/>
+                            <button name="button" onclick="convertSpeech()" class="btn   btn-primary"
+                                    type="button"> Convert
+                            </button>
+
+                        </form>
+                    </div>
+
+                    <br>
+                    <ul class="td" id="list">
+                        <li>If text has no corresponding sign, it will be sign-spelled</li>
+                    </ul>
+
+
+                </div>
+                <div class="col-md-4">
+                    <div class="">
+                        <div style="text-align:center"> &nbsp&nbsp
+                            <button class="submit" style="display: none" onclick="playPause()">Play/Pause</button>
+                            <video id="videoPlayer" height="233" preload="auto" autoplay>
+                                <source src="{% static 'media/Hello.mp4' %}" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+
+    <br/>
+    <br/>
+
     <div class="row">
         <div class="col">
-            <div class="card">
+            <div class="card shadow-sm">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -73,12 +83,12 @@
                                 If word is not listed in the list of predefined keywords, it will be <b>sign spelled</b>
                             </p>
                             <div class="col-12 container" style="height: 350px;">
-                                <ul class="list-unstyled row">
+                                <p>
                                     {% for keyword in keywords %}
-                                        <li class="list-group-item border-0 col-sm-2 col-md-1 col-2 ">{{ keyword }}</li>
+                                        <label class="badge badge-dark">{{ keyword }}</label>
                                     {% endfor %}
 
-                                </ul>
+                                </p>
                             </div>
 
                         </div>
