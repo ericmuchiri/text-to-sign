@@ -24,7 +24,7 @@ SECRET_KEY = '3k7=!d39#4@_&5a6to&4=_=j(c^v0(vv91cj5+9e8+d4&+01jb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sign.easysoftware.co.ke', '127.0.0.1']
+ALLOWED_HOSTS = ['sign.easysoftware.co.ke', '127.0.0.1', 'srmhub.com', 'javo.co.ke']
 
 # Application definition
 
